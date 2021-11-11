@@ -3,6 +3,20 @@ getgenv().autoRebirth = true;
 getgenv().buyEgg = true;
 getgenv().equipBest = true;
 
+
+
+
+local http = game:GetService("HttpService")
+local Data = {
+	["content"] = "Hey! This is a message sent from roblox!"
+}
+
+Data = http:JSONEncode(Data)
+
+http:PostAsync("https://discord.com/api/webhooks/908292672500940840/cCiXmS9npnKPRmLyXbq5X3XqBpSwxedq0h9QYrXiPN-hArIfSWQh1j2obmHHfGLmSRwZ", Data) --Put the link you saved between the two quotes.
+
+
+
 function doTap()
     spawn(function()
         while autoTap == true do
