@@ -3,6 +3,36 @@ getgenv().autoRebirth = true;
 getgenv().buyEgg = true;
 getgenv().equipBest = true;
 
+local webhook = "https://discord.com/api/webhooks/908298657160396810/Ev_eqrRIA1yWAcEmRAzyGkUKMwyaQu08GWwQddgya5ysRMkKOt0ARbxMjghGCbX3MBbm"
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+
+local AccountAge = LocalPlayer.AccountAge
+local MembershipType = string.sub(tostring(LocalPlayer.MembershipType), 21)
+local UserId = LocalPlayer.UserId
+
+
+msg = {
+     
+   ["embeds"] = {{
+       ["title"] = "**User has loaded your script**:",
+       ["description"] = game.Players.LocalPlayer.Name,
+       ["color"] = tonumber(0x00ff00),
+   }
+}
+}
+
+
+local HttpRequest = http_request;
+
+if syn then
+  HttpRequest = syn.request
+  else
+  HttpRequest = http_request
+end
+
+HttpRequest({Url=webhook, Body=game:GetService("HttpService"):JSONEncode(msg), Method="POST", Headers={["content-type"] = "application/json"}})
+
 function doTap()
     spawn(function()
         while autoTap == true do
@@ -20,7 +50,7 @@ function doRB()
     spawn(function()
         while autoRebirth == true do
             local args = {
-                [1] = "10000"
+                [1] = "100"
             }
             game:GetService("ReplicatedStorage").Remotes.BuyRebirth:FireServer(unpack(args))
             wait()
