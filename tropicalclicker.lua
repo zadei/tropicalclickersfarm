@@ -50,7 +50,7 @@ function doRB()
     spawn(function()
         while autoRebirth == true do
             local args = {
-                [1] = "100"
+                [1] = "10"
             }
             game:GetService("ReplicatedStorage").Remotes.BuyRebirth:FireServer(unpack(args))
             wait()
@@ -62,16 +62,13 @@ function doEgg()
     spawn(function()
         while buyEgg == true do
             local args = {
-                [1] = "GhostEgg",
+                [1] = "Common Egg",
                 [2] = 1,
-                [3] = {
-                    [1] = "Common",
-                    [2] = "Uncommon",
-                    [3] = "Rare"
-                }
+                [3] = {}
             }
+
             game:GetService("ReplicatedStorage").Remotes.EggHatch:InvokeServer(unpack(args))
-            wait(0)
+            wait()
         end
     end)
 end
